@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
     <!-- Recently Viewed Products Carousel -->
     <t t-name="custom_website.abc">
-        <div t-att-id="uniqueId" class="carousel slide o_not_editable" data-interval="false">
+        <div t-att-id="uniqueId" class="carousel slide o_not_editable" data-interval="false" style="weight: 100%;">
             <div class="carousel-inner">
                 <t t-foreach="productsGroups" t-as="products">
                     <div t-attf-class="carousel-item #{!products_index and 'active' or ''}">
@@ -12,17 +12,17 @@
                                     <div class="o_carousel_product_card card h-100">
                                         <input type="hidden" name="product-id" t-att-data-product-id="product.id"/>
                                         <a class="o_carousel_product_img_link" t-att-href="product.website_url">
-                                            <img class="o_carousel_product_card_img_top card-img-top" t-attf-src="/web/image/product.product/#{product.id}#{productFrame == 1 ? '/image_256' : '/image_512'}" t-att-alt="product.display_name"/>
+                                            <img class="o_carousel_product_card_img_top card-img-top" t-attf-src="/web/image/product.product/#{product.id}#{productFrame == 5 ? '/image_128' : '/image_512'}" t-att-alt="product.display_name"/>
                                         </a>
                                         <i class="fa fa-trash o_carousel_product_remove js_remove"></i>
-                                        <div class="o_carousel_product_card_body card-body border-top">
+                                        <div class="o_carousel_product_card_body card-body line-height1 border-top" style="height: 5px;">
                                             <a t-att-href="product.website_url" class="text-decoration-none">
                                                 <h6 class="card-title mb-0 text-truncate" t-raw="product.display_name"/>
                                             </a>
                                             <t t-if="product.rating" t-raw="product.rating"/>
                                         </div>
                                         <div class="o_carousel_product_card_footer card-footer d-flex align-items-center">
-                                            <div class="d-block font-weight-bold" t-raw="product.price"/>
+                                            <div class="d-block font-weight-bold" t-raw="product.price" style="height: 10px;"/>
                                             <button type="button" role="button" class="btn btn-primary js_add_cart ml-auto" title="Add to Cart">
                                                 <i class="fa fa-fw fa-shopping-cart"/>
                                             </button>

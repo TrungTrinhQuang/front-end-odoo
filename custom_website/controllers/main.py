@@ -57,7 +57,5 @@ class CustomSnippets(WebsiteForm):
                             'rating_count': product.rating_count,
                         })
                     res['products'].append(res_product)
-                print('a')
-                print(res['products'])
                 return res
         return {}

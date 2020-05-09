@@ -1,52 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="snippet_custom" name="custom snippet">
-        <section class="snippet_custom">
+        <section class="snippet_custom d-none pt24 pb24" style="min-height: 400px;">
             <div class="container">
-                <h3 class="text-center mb32">viewed Products</h3>
+                <h3 class="text-center mb32">My Snippets</h3>
                 <div class="slider o_not_editable" style="display: none;"/> <!-- TODO master: remove deprecated inline style -->
             </div>
         </section>
     </template>
 
-    <template id="snippet_custom_options" inherit_id="website.snippet_options" name="e-commerce snippet options custom">
-        <xpath expr="." position="inside">
-            <div data-js="WebsiteSaleProductsItem"
-            data-selector=".snippet_custom .oe_product"
-            data-no-check="true">
-            <we-collapse-area>
-                <we-toggler>Size</we-toggler>
-                <we-collapse class="o_wsale_soptions_menu_sizes">
-                    <table>
-                        <tr>
-                            <td/><td/><td/><td/>
-                        </tr>
-                        <tr>
-                            <td/><td/><td/><td/>
-                        </tr>
-                        <tr>
-                            <td/><td/><td/><td/>
-                        </tr>
-                        <tr>
-                            <td/><td/><td/><td/>
-                        </tr>
-                    </table>
-                </we-collapse>
-            </we-collapse-area>
-            <we-collapse-area>
-                <we-toggler>Styles</we-toggler>
-                <we-collapse data-no-preview="true" name="style"/>
-            </we-collapse-area>
-            <we-collapse-area>
-                <we-toggler>Promote</we-toggler>
-                <we-collapse data-no-preview="true">
-                    <we-button data-change-sequence="top">Push to top</we-button>
-                    <we-button data-change-sequence="up">Push up</we-button>
-                    <we-button data-change-sequence="down">Push down</we-button>
-                    <we-button data-change-sequence="bottom">Push to bottom</we-button>
-                </we-collapse>
-            </we-collapse-area>
-        </div>
+    <template id="snippet_custom_opt" name="Snippet Testimonial Options" inherit_id="website.snippet_options">
+        <xpath expr="//div[@data-js='background']" position="after">
+            <div data-selector=".snippet_custom"
+                 data-js="CustomSnippets">
+                <div class="dropdown-submenu">
+                    <a href="#" class="dropdown-item">Your Option</a>
+<!--                    <we-collapse-area>-->
+<!--                        <we-toggler>Size</we-toggler>-->
+<!--                            <we-collapse class="o_wsale_soptions_menu_sizes">-->
+<!--                                <table>-->
+<!--                                    <tr>-->
+<!--                                        <td/><td/><td/><td/>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td/><td/><td/><td/>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td/><td/><td/><td/>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td/><td/><td/><td/>-->
+<!--                                    </tr>-->
+<!--                    </table>-->
+<!--                </we-collapse>-->
+<!--            </we-collapse-area>-->
+                </div>
+            </div>
         </xpath>
     </template>
     <template id="snippets_product" inherit_id="website.snippets" name="e-commerce snippets product">

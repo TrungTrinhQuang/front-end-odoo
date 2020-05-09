@@ -14,8 +14,8 @@ publicWidget.registry.CustomSnippets = publicWidget.Widget.extend({
     xmlDependencies: ['/custom_website/static/src/xml/website_sale_recently_viewed.xml'],
     disabledInEditableMode: false,
     read_events: {
-        // 'click .js_add_cart': '_onAddToCart',
-        // 'click .js_remove': '_onRemove',
+        'click .js_add_cart': '_onAddToCart',
+        'click .js_remove': '_onRemove',
     },
 
     /**
@@ -24,7 +24,7 @@ publicWidget.registry.CustomSnippets = publicWidget.Widget.extend({
     init: function () {
         this._super.apply(this, arguments);
         this._dp = new concurrency.DropPrevious();
-        this.uniqueId = _.uniqueId('snippet_custom');
+        this.uniqueId = _.uniqueId('o_carousel_recently_viewed_products_');
         this._onResizeChange = _.debounce(this._addCarousel, 100);
     },
     /**
@@ -100,7 +100,7 @@ publicWidget.registry.CustomSnippets = publicWidget.Widget.extend({
         var products = res['products'];
         var mobileProducts = [], webProducts = [], productsTemp = [];
         _.each(products, function (product) {
-            if (productsTemp.length === 10) {
+            if (productsTemp.length === 4) {
                 webProducts.push(productsTemp);
                 productsTemp = [];
             }
@@ -111,11 +111,11 @@ publicWidget.registry.CustomSnippets = publicWidget.Widget.extend({
             webProducts.push(productsTemp);
         }
 
-        // this.mobileCarousel = $(qweb.render('custom_website.abc', {
-        //     uniqueId: this.uniqueId,
-        //     productFrame: 1,
-        //     productsGroups: mobileProducts,
-        // }));
+        this.mobileCarousel = $(qweb.render('custom_website.abc', {
+            uniqueId: this.uniqueId,
+            productFrame: 1,
+            productsGroups: mobileProducts,
+        }));
         this.webCarousel = $(qweb.render('custom_website.abc', {
             uniqueId: this.uniqueId,
             productFrame: 4,
